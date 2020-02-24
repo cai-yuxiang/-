@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cyx.mapper.resumeMapper">
+    <select id="selectResumeByID" resultType="People">
+      select * from ssm.resume
+      where peopleID =#{peopleID};
+    </select>
+    <update id="updatePeopleResume" parameterType="People">
+        update ssm.resume set
+        peopleName = #{peopleName} ,
+        peopleAge = #{peopleAge} ,
+        peopleSchool = #{peopleSchool},
+        peopleSex = #{peopleSex}
+        where peopleID =#{peopleID};
+    </update>
+    <delete id="deletePeopleByID">
+        delete from ssm.resume where peopleID =#{peopleID};
+    </delete>
+    <insert id="addPeopleResume" parameterType="People">
+        insert into ssm.resume(peopleName,peopleAge,PeopleSchool,peopleSex)
+        values (#{peopleName},#{peopleAge},#{peopleSchool},#{peopleSex});
+    </insert>
+    <select id="selectAll" resultType="People">
+        select * from ssm.resume;
+    </select>
+</mapper>
